@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { DataSource } from 'typeorm';
 import { UserModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 import 'dotenv/config'
 
 @Module({
@@ -16,6 +17,7 @@ import 'dotenv/config'
       synchronize: true,
     }),
     UserModule,
+    AuthModule
   ]
 })
 export class AppModule {
