@@ -3,6 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { DataSource } from 'typeorm';
 import { UserModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ObservationModule } from './observation/observation.module';
+import { OrderModule } from './order/order.module';
+import { PredictionModule } from './prediction/prediction.module';
+import { SpeciesModule } from './species/species.module';
+
 import 'dotenv/config'
 
 @Module({
@@ -17,7 +22,11 @@ import 'dotenv/config'
       synchronize: true,
     }),
     UserModule,
-    AuthModule
+    AuthModule,
+    ObservationModule,
+    OrderModule,
+    PredictionModule,
+    SpeciesModule
   ]
 })
 export class AppModule {
