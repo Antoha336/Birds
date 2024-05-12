@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Observation } from "src/observation/observation.entity";
+import { Entity, Column, Relation, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -11,9 +12,12 @@ export class User {
   @Column()
   password: string;
 
+  @OneToMany(() => Observation, obsevation => obsevation.id)
+  observations: Relation<Observation>[];
+
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
-  public created_at: Date;
+  created_at: Date;
 
   @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
-  public updated_at: Date;
+  updated_at: Date;
 }
