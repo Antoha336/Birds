@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { DataSource } from 'typeorm';
+import { UserModule } from './users/users.module';
 import 'dotenv/config'
 
 @Module({
@@ -12,11 +12,12 @@ import 'dotenv/config'
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [],
+      autoLoadEntities: true,
       synchronize: true,
-    })
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    }),
+    UserModule,
+  ]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
