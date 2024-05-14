@@ -4,18 +4,18 @@ import { Prediction } from "src/prediction/prediction.entity";
 
 @Entity()
 export class Species {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    latin_name: string;
+  @Column()
+  latin_name: string;
 
-    @Column({nullable: true})
-    russian_name: string;
+  @Column({nullable: true})
+  russian_name: string;
 
-    @ManyToOne(() => Order, (order) => order.order_species)
-    order: Relation<Order>;
+  @ManyToOne(() => Order, (order) => order.order_species)
+  order: Relation<Order>;
 
-    @OneToMany(() => Prediction, (prediction) => prediction.id)
-    predictions: Relation<Prediction>[];
+  @OneToMany(() => Prediction, (prediction) => prediction.id)
+  predictions: Relation<Prediction>[];
 }
