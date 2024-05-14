@@ -6,10 +6,10 @@ export class Order {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ unique: true })
     latin_name: string;
 
-    @Column()
+    @Column({ nullable: true })
     russian_name: string;
 
     @OneToMany(() => Species, (species) => species.id)
