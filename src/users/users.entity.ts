@@ -12,6 +12,9 @@ export class User {
   @Column()
   password: string;
 
+  @Column({ default: false })
+  is_admin: boolean;
+
   @OneToMany(() => Observation, obsevation => obsevation.id)
   observations: Relation<Observation>[];
 
