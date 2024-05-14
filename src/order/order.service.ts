@@ -10,9 +10,9 @@ export class OrderService {
 
   async create(order: OrderInterface): Promise<void> {
     try {
-        await this.orderRepository.save(order)
+      await this.orderRepository.save(order)
     } catch (error) {
-        throw new BadRequestException('Отряд с таким именем уже существует');
+      throw new BadRequestException('Отряд с таким именем уже существует');
     }
   }
 
