@@ -1,6 +1,6 @@
-import { IsNumber } from "class-validator";
+import { IsNumberString } from "class-validator";
 
 export class DeleteOrderDto {
-    @IsNumber(null, { message: 'Должен быть передан целочисленный id' })
+    @IsNumberString(null, { message: 'Должен быть передан целочисленный id' })
     id: number;
 }

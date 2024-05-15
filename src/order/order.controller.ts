@@ -20,7 +20,7 @@ export class OrderController {
   @Delete(':id')
   @AdminOnly()
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') deleteOrderDto: DeleteOrderDto): Promise<void> {
+  remove(@Param() deleteOrderDto: DeleteOrderDto): Promise<void> {
     return this.orderService.remove(deleteOrderDto.id);
   }
 }
