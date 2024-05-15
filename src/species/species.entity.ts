@@ -7,10 +7,10 @@ export class Species {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   latin_name: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   russian_name: string;
 
   @ManyToOne(() => Order, (order) => order.order_species)
