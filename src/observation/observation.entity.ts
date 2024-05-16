@@ -10,14 +10,11 @@ export class Observation {
     @ManyToOne(() => User, (user) => user.id)
     user: Relation<User>;
 
-    @Column('decimal', {precision: 6, scale: 4})
+    @Column('decimal', {precision: 6, scale: 4, nullable: true })
     latitude: number;
 
-    @Column('decimal', {precision: 7, scale: 4})
+    @Column('decimal', {precision: 7, scale: 4, nullable: true })
     longitude: number;
-
-    @Column()
-    status: string;
 
     @Column()
     picture: string;
