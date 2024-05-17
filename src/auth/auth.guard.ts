@@ -1,9 +1,10 @@
 import { CanActivate, ExecutionContext, ForbiddenException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from './constants';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
-  
+
+import 'dotenv/config'
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
@@ -18,7 +19,7 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException('Токен не был передан');
     }
     try {
-      const payload = await this.jwtService.verifyAsync(token, { secret: jwtConstants.secret });
+      const payload = await this.jwtService.verifyAsync(token, { secret: process.env.JWT_SECRET });
       request['user'] = payload;
     } catch {
       throw new UnauthorizedException('Вы не аутентифицированы');
