@@ -13,6 +13,6 @@ export class Prediction {
     @ManyToOne(() => Species, (species) => species.predictions)
     species: Relation<Species>;
 
-    @Column('decimal', {precision: 4, scale: 2})
+    @Column('decimal', {precision: 5, scale: 2})
     probability: number;
 }

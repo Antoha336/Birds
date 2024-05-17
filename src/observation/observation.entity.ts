@@ -16,7 +16,7 @@ export class Observation {
     @Column('decimal', {precision: 7, scale: 4, nullable: true })
     longitude: number;
 
-    @Column()
+    @Column({ nullable: true })
     picture: string;
 
     @OneToMany(() => Prediction, (prediction) => prediction.id)
